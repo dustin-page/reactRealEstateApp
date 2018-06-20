@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import './main-page.css';
-import Header from '../shared-components/header';
-import FeaturedHouse from './featured-house';
-import HouseDetail from '../shared-components/house-detail';
-import HouseFilter from '../shared-components/house-filter';
-import SearchResults from '../search-results';
+import AppPresentation from './app-presentation';
 
 class App extends Component {
 
@@ -67,24 +62,16 @@ class App extends Component {
   }
 
   render() {
-
-    let activeComponent = null;
-    //Render Components based on if statements
-    if (this.state.country)
-    activeComponent = <SearchResults country={this.state.country} 
-      filteredHouses={this.state.filteredHouses} setActiveHouse={this.setActiveHouse} />;
-    if (this.state.activeHouse)
-      activeComponent = <HouseDetail house={this.state.activeHouse}/>;
-    if (!activeComponent)
-      activeComponent = <FeaturedHouse house={this.state.featuredHouse} />;
-
     return (
-      <div className="container">
-        <Header subtitle="Providing houses all over the world" /> 
-        <HouseFilter countries={this.state.countries} filterHouses={this.filterHouses}/>
-        {activeComponent}
-        
-      </div>
+      <AppPresentation
+      country={this.state.country}
+      filteredHouses={this.state.filteredHouses}
+      featuredHouse={this.state.featuredHouse}
+      countries={this.state.countries}
+      filterHouses={this.filterHouses}
+      activeHouse={this.state.activeHouse}
+      setActiveHouse={this.setActiveHouse}
+      />
     );
   }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './house-detail.css';
 import emailIcon from './Email.png';
 import InquiryForm from './inquiry-form';
+import PropTypes from 'prop-types';
 
 class HouseDetail extends Component {
     state = {
@@ -40,5 +41,8 @@ class HouseDetail extends Component {
         )
     }
 }
- 
+
+//Type checking with propTypes
+HouseDetail.propTypes = {house: PropTypes.object.isRequired}; //Specify house prop should be an object that is required
+
 export default HouseDetail;
